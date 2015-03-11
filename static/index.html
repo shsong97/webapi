@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<title>
+		index page
+	</title>
+</head>
+<body>
+<input type="text" name="user_id" id="user_id" value="" placeholder="username">
+<input type="text" name="password" value="" id="password" value="" placeholder="password">	
+<button onclick="request_user();">Request User</button>
+<div id="result">
+	
+</div>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+
+function request_user()
+{
+	var userid=$("#user_id").val();
+	var password=$("#password").val();
+	var req = $.ajax({
+	url: "/api/user/"+userid+"/"+password,
+	dataType: "json"
+	});
+	req.done(function(json_data) {
+		var userid=json_data['userid'];
+		var pass=json_data['password'];
+		var token=json_data['token']
+		var html_text = "User id : " + userid + "<br />" + "Password : " + pass + "<br />" + "Token : " + token;
+		$("#result").html(html_text);
+	});
+};
+	
+</script>	
+</body>
+</html>
