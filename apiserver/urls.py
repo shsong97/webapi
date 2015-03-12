@@ -4,5 +4,5 @@ from apiserver import views
 urlpatterns = patterns('',
     url(r'^user/(\w+)/(\w+)', views.login),
     url(r'^userlist', views.user_list),
-    url(r'^perm/(\w+)/(\w+)', views.perm),
+    url(r'^perm/(\w+)/(\w+)/(\w+)', views.perm),
 )
